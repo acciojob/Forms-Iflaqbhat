@@ -10,25 +10,26 @@ const FormState = () => {
   });
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    console.log(formData);
   };
 
   return (
     <Card>
       <form id="info-form" onSubmit={handleSubmit}>
         <input
-          id="fullName"
+          id="full_name"
           type="text"
           value={formData.fullName}
           onChange={handleChange}
           placeholder="Full Name"
-          required
         />
         <input
           id="email"
@@ -36,7 +37,6 @@ const FormState = () => {
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
-          required
         />
         <input
           id="password"
@@ -44,15 +44,13 @@ const FormState = () => {
           value={formData.password}
           onChange={handleChange}
           placeholder="Password"
-          required
         />
         <input
-          id="confirmPassword"
+          id="password_confirmation"
           type="password"
           value={formData.confirmPassword}
           onChange={handleChange}
           placeholder="Confirm Password"
-          required
         />
         <button type="submit">Submit</button>
       </form>

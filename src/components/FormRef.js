@@ -9,42 +9,35 @@ const FormRef = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Full Name:", fullNameRef.current.value);
-    console.log("Email:", emailRef.current.value);
-    console.log("Password:", passwordRef.current.value);
-    console.log("Password Confirmation:", confirmPasswordRef.current.value);
+    console.log({
+      fullName: fullNameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      confirmPassword: confirmPasswordRef.current.value,
+    });
   };
 
   return (
     <Card>
       <form id="info-form" onSubmit={handleSubmit}>
         <input
+          ref={fullNameRef}
           id="full_name"
           type="text"
-          ref={fullNameRef}
           placeholder="Full Name"
-          required
         />
+        <input ref={emailRef} id="email" type="email" placeholder="Email" />
         <input
-          id="email"
-          type="email"
-          ref={emailRef}
-          placeholder="Email"
-          required
-        />
-        <input
+          ref={passwordRef}
           id="password"
           type="password"
-          ref={passwordRef}
           placeholder="Password"
-          required
         />
         <input
+          ref={confirmPasswordRef}
           id="password_confirmation"
           type="password"
-          ref={confirmPasswordRef}
           placeholder="Confirm Password"
-          required
         />
         <button type="submit">Submit</button>
       </form>
